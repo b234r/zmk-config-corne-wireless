@@ -62,6 +62,16 @@
             bindings = <&tk LCTRL SPACE>;
             key-positions = <38 39>;
         };
+
+        leftboot {
+            bindings = <&bootloader>;
+            key-positions = <0 5 38>;
+        };
+
+        rightboot {
+            bindings = <&bootloader>;
+            key-positions = <11 6 39>;
+        };
     };
 
     macros {
@@ -93,20 +103,6 @@
     };
 
     behaviors {
-        index_func: index_func {
-            compatible = "zmk,behavior-hold-tap";
-            label = "INDEX_FUNC";
-            bindings = <&mo>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <170>;
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <100>;
-            flavor = "tap-preferred";
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <13 1 25 26 14 3 2 15 27 28 16 4 6 20 21 22 32 23>;
-        };
-
         index_num: index_num {
             compatible = "zmk,behavior-hold-tap";
             label = "INDEX_NUM";
@@ -158,10 +154,10 @@
 
             display-name = "Base";
             bindings = <
-&kp TAB              &kp Q  &kp W  &kp E             &kp R                   &kp T             &kp Y            &kp U               &kp I              &kp O    &kp P     &kp DELETE
-&mt LEFT_ALT ESCAPE  &kp A  &kp S  &kp D             &kp F                   &kp G             &kp H            &kp J               &kp K              &kp L    &kp SEMI  &kp SQT
-&kp LEFT_GUI         &kp Z  &kp X  &kp C             &kp V                   &index_num 1 B    &index_func 4 N  &kp M               &kp COMMA          &kp DOT  &kp FSLH  &kp RIGHT_ALT
-                                   &kp LEFT_CONTROL  &thumb_nav 2 BACKSPACE  &kp SPACE         &kp LEFT_SHIFT   &thumb_sym 1 ENTER  &kp RIGHT_CONTROL
+&kp TAB              &kp Q  &kp W  &kp E             &kp R                   &kp T             &kp Y           &kp U               &kp I              &kp O    &kp P     &lt 4 DELETE
+&mt LEFT_ALT ESCAPE  &kp A  &kp S  &kp D             &kp F                   &kp G             &kp H           &kp J               &kp K              &kp L    &kp SEMI  &kp SQT
+&kp LEFT_GUI         &kp Z  &kp X  &kp C             &kp V                   &index_num 1 B    &kp N           &kp M               &kp COMMA          &kp DOT  &kp FSLH  &kp RIGHT_ALT
+                                   &kp LEFT_CONTROL  &thumb_nav 2 BACKSPACE  &kp SPACE         &kp LEFT_SHIFT  &thumb_sym 3 ENTER  &kp RIGHT_CONTROL
             >;
 
             label = "Base";
@@ -209,10 +205,10 @@
 
         function {
             bindings = <
-&none  &kp F9  &kp F10  &kp F11  &kp F12  &kp C_VOLUME_UP      &bt BT_CLR  &none  &none         &none         &none         &none
-&none  &kp F5  &kp F6   &kp F7   &kp F8   &kp K_MUTE           &none       &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
-&none  &kp F1  &kp F2   &kp F3   &kp F4   &kp C_VOLUME_DOWN    &none       &none  &out OUT_USB  &none         &none         &none
-                        &none    &none    &none                &none       &none  &none
+&none  &kp F9  &kp F10  &kp F11  &kp F12  &kp C_VOLUME_UP      &none         &none         &none         &none         &none  &none
+&none  &kp F5  &kp F6   &kp F7   &kp F8   &kp K_MUTE           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &none  &none
+&none  &kp F1  &kp F2   &kp F3   &kp F4   &kp C_VOLUME_DOWN    &out OUT_USB  &none         &none         &none         &none  &bt BT_CLR
+                        &none    &none    &none                &none         &none         &none
             >;
 
             label = "Function";
